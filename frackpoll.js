@@ -12,11 +12,11 @@ var vote = function(side, reasons) {
 
   var reason;
   if (choice === reasons.length) {
-    var id = '#' + side+ 'ReasonInput'; // TODO: format string
+    var id = '#' + side + 'ReasonInput'; // TODO: format string
     reason = $(id).val();
   }
   else {
-    reason = reasons[choice]['value'];
+    reason = reasons[choice]['reason'];
   }
 
   console.log(side, 'reason:', reason);
@@ -57,9 +57,9 @@ if (Meteor.isClient) {
 
   // Spacebar templates currently can't provide index in HTML
   Template.proponents_template.reasons = [
-    {key: 0, value: 'It is financially beneficial for the U.S economy.'},
-    {key: 1, value: 'Reduces the U.S dependence of foreign energy.' },
-    {key: 2, value: 'Extraction and usage of natural gas is a form "clean" energy.'}
+    {index: 0, reason: 'It is financially beneficial for the U.S economy.', link: ''},
+    {index: 1, reason: 'Reduces the U.S dependence of foreign energy.', link: '' },
+    {index: 2, reason: 'Extraction and usage of natural gas is a form "clean" energy.', link: ''}
   ];
 
   Template.proponents_template.events = {
@@ -76,8 +76,8 @@ if (Meteor.isClient) {
   };
 
   Template.undecided_template.reasons = [
-    {key: 0, value: 'I am not informed enough to make an educated decision.'},
-    {key: 1, value: 'The evidence presented did not convince me to vote either way.' },
+    {index: 0, reason: 'I am not informed enough to make an educated decision.'},
+    {index: 1, reason: 'The evidence presented did not convince me to vote either way.' },
   ];
 
   Template.undecided_template.events = {
@@ -94,9 +94,9 @@ if (Meteor.isClient) {
   };
 
   Template.opponents_template.reasons = [
-    {key: 0, value: 'Water contamination concerns like methane migration.'},
-    {key: 1, value: 'Air quality concerns from large amounts of water transportation and methane emissions.'},
-    {key: 2, value: 'Fracking well pads require a lot of land which negatively effects the surrounding habitat.'},
+    {index: 0, reason: 'Water contamination concerns like methane migration.'},
+    {index: 1, reason: 'Air quality concerns from large amounts of water transportation and methane emissions.'},
+    {index: 2, reason: 'Fracking well pads require a lot of land which negatively effect the surrounding habitat.'},
   ];
 
   Template.opponents_template.events = {

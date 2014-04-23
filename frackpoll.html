@@ -1,0 +1,23 @@
+<head>
+  <title>myapp</title>
+</head>
+
+<body>
+    {{> proponents_list}}
+
+    {{> undecided_list}}
+
+    {{> opponents_list}}
+</body>
+
+<template name="proponents_list">
+    <h4>Proponents: {{proponents.count}}</h4>
+</template>
+
+<template name="undecided_list">
+    <h4>Undecided: {{undecided.count}}</h4>
+</template>
+
+<template name="opponents_list">
+    <h4>Opponents: {{opponents.count}}</h4>
+</template>

@@ -13,6 +13,7 @@ if (Meteor.isClient) {
     return Votes.find({side: SideEnum.PROPONENT});
   };
 
+  // Spacebar templates currently can't provide index in HTML
   Template.proponents_template.reasons = [
     {key: 0, value: 'It is financially beneficial for the U.S economy.'},
     {key: 1, value: 'Reduces the U.S dependence of foreign energy.' },
@@ -22,13 +23,18 @@ if (Meteor.isClient) {
   Template.proponents_template.events = {
     'click button': function() {
       var radio = $('input[name=proponentReasonRadio]');
-      var reason = radio.filter(':checked').val();
+      var choice = parseInt(radio.filter(':checked').val());
 
-      if (reason === 'reason4') {
-        var otherReason = $('#proponentOtherReason').val();
-      } else {
-
+      var reason;
+      if (choice === Template.proponents_template.reasons.length) {
+        reason = $('#otherReasonInput').val();
       }
+      else {
+        reason = Template.proponents_template.reasons[choice]['value'];
+      }
+
+      console.log('Proponent Reason:', reason);
+      Votes.insert({side: SideEnum.PROPONENT, reason: reason});
     }
   };
 
@@ -36,6 +42,11 @@ if (Meteor.isClient) {
   Template.undecided_template.undecided = function() {
     return Votes.find({side: SideEnum.UNDECIDED});
   };
+
+  Template.undecided_template.reasons = [
+    {key: 0, value: 'I am not informed enough to make an educated decision.'},
+    {key: 1, value: 'The evidence presented did not convince me to vote either way.' },
+  ];
 
   // Opponent
   Template.opponents_template.opponents = function() {

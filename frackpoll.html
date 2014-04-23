@@ -12,6 +12,10 @@
         <div class="col-md-4">
             {{> proponents_template}}
         </div>
+
+        <div class="col-md-4">
+            {{> undecided_template}}
+        </div>
     </div>
 
     </div>
@@ -23,7 +27,7 @@
    {{#each reasons}}
    <div class="radio">
         <label>
-            <input type="radio" name="proponentReasonRadio" value="reason{{key}}">
+            <input type="radio" name="proponentReasonRadio" value="{{key}}">
             {{value}}
         </label>
     </div>
@@ -31,8 +35,30 @@
 
     <div class="radio">
         <label>
-            <input type="radio" name="proponentReasonRadio" value="reason{{reasons.length}}">
-            Other: <input type="text" id="proponentReason{{reasons.length}}">
+            <input type="radio" name="proponentReasonRadio" value="{{reasons.length}}">
+            Other: <input type="text" id="otherReasonInput">
+        </label>
+    </div>
+
+    <button type="button" class="btn btn-primary">Vote</button>
+</template>
+
+<template name="undecided_template">
+    <h4>Undecided: {{undecided.count}}</h4>
+
+   {{#each reasons}}
+   <div class="radio">
+        <label>
+            <input type="radio" name="undecidedReasonRadio" value="{{key}}">
+            {{value}}
+        </label>
+    </div>
+   {{/each}}
+
+    <div class="radio">
+        <label>
+            <input type="radio" name="undecidedReasonRadio" value="{{reasons.length}}">
+            Other: <input type="text" id="otherReasonInput">
         </label>
     </div>
 

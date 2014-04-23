@@ -10,6 +10,12 @@ if (Meteor.isClient) {
     return Proponents.find({}, {});
   };
 
+  Template.proponents_list.events = {
+    'click button': function() {
+      console.log('Proponents Vote');
+    }
+  };
+
   Template.undecided_list.undecided = function() {
     return Undecided.find({}, {});
   };

@@ -1,23 +1,37 @@
 <head>
-  <title>myapp</title>
+    <title>Unconventional Hydraulic Fracturing Poll</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 </head>
 
 <body>
-    {{> proponents_list}}
+    <div class="container">
 
-    {{> undecided_list}}
+    <div class="row">
+        <div class="col-md-4">
+            {{> proponents_list}}
+        </div>
+        <div class="col-md-4">
+            {{> undecided_list}}
+        </div>
+        <div class="col-md-4">
+            {{> opponents_list}}
+        </div>
+    </div>
 
-    {{> opponents_list}}
+    </div>
 </body>
 
 <template name="proponents_list">
     <h4>Proponents: {{proponents.count}}</h4>
+    <button type="button" class="btn btn-default">Vote</button>
 </template>
 
 <template name="undecided_list">
     <h4>Undecided: {{undecided.count}}</h4>
+    <button type="button" class="btn btn-default">Vote</button>
 </template>
 
 <template name="opponents_list">
     <h4>Opponents: {{opponents.count}}</h4>
+    <button type="button" class="btn btn-default">Vote</button>
 </template>

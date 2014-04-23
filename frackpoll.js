@@ -23,6 +23,12 @@ var vote = function(side, reasons) {
   Votes.insert({side: side, reason: reason});
 };
 
+var reasonSelected = function(side) {
+  Session.set('side', side);
+  // if necessary enable vote button
+  $('#voteButton').removeAttr('disabled');
+};
+
 if (Meteor.isClient) {
 
   // Vote
@@ -58,7 +64,7 @@ if (Meteor.isClient) {
 
   Template.proponents_template.events = {
     'click .reason': function() {
-      Session.set('side', SideEnum.PROPONENT);
+      reasonSelected(SideEnum.PROPONENT);
     }
   };
 
@@ -76,7 +82,7 @@ if (Meteor.isClient) {
 
   Template.undecided_template.events = {
     'click .reason': function() {
-      Session.set('side', SideEnum.UNDECIDED);
+      reasonSelected(SideEnum.UNDECIDED);
     }
   };
 
@@ -95,7 +101,7 @@ if (Meteor.isClient) {
 
   Template.opponents_template.events = {
     'click .reason': function() {
-      Session.set('side', SideEnum.OPPONENT);
+      reasonSelected(SideEnum.OPPONENT);
     }
   };
 

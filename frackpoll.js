@@ -1,27 +1,45 @@
-// Collections
-Proponents = new Meteor.Collection('proponents');
-Opponents = new Meteor.Collection('opponents');
-Undecided = new Meteor.Collection('undecided');
+Votes = new Meteor.Collection('votes');
+
+var SideEnum = {
+  PROPONENT: 'proponent',
+  UNDECIDED: 'undecided',
+  OPPONENT: 'opponent'
+};
 
 if (Meteor.isClient) {
 
-  // Templates
-  Template.proponents_list.proponents = function() {
-    return Proponents.find({}, {});
+  // Proponent
+  Template.proponents_template.proponents = function() {
+    return Votes.find({side: SideEnum.PROPONENT});
   };
 
-  Template.proponents_list.events = {
+  Template.proponents_template.reasons = [
+    {key: 0, value: 'It is financially beneficial for the U.S economy.'},
+    {key: 1, value: 'Reduces the U.S dependence of foreign energy.' },
+    {key: 2, value: 'Extraction and usage of natural gas is a form "clean" energy.'}
+  ];
+
+  Template.proponents_template.events = {
     'click button': function() {
-      console.log('Proponents Vote');
+      var radio = $('input[name=proponentReasonRadio]');
+      var reason = radio.filter(':checked').val();
+
+      if (reason === 'reason4') {
+        var otherReason = $('#proponentOtherReason').val();
+      } else {
+
+      }
     }
   };
 
-  Template.undecided_list.undecided = function() {
-    return Undecided.find({}, {});
+  // Undecided
+  Template.undecided_template.undecided = function() {
+    return Votes.find({side: SideEnum.UNDECIDED});
   };
 
-  Template.opponents_list.opponents = function() {
-    return Opponents.find({}, {});
+  // Opponent
+  Template.opponents_template.opponents = function() {
+    return Votes.find({side: SideEnum.OPPONENT});
   };
 
 }

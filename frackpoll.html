@@ -6,32 +6,35 @@
 <body>
     <div class="container">
 
+    <h3>Should Unconventional Hydraulic Fracturing Methods Be Used To Extract Natural Gas in the U.S?</h3>
+
     <div class="row">
         <div class="col-md-4">
-            {{> proponents_list}}
-        </div>
-        <div class="col-md-4">
-            {{> undecided_list}}
-        </div>
-        <div class="col-md-4">
-            {{> opponents_list}}
+            {{> proponents_template}}
         </div>
     </div>
 
     </div>
 </body>
 
-<template name="proponents_list">
+<template name="proponents_template">
     <h4>Proponents: {{proponents.count}}</h4>
-    <button type="button" class="btn btn-default">Vote</button>
-</template>
 
-<template name="undecided_list">
-    <h4>Undecided: {{undecided.count}}</h4>
-    <button type="button" class="btn btn-default">Vote</button>
-</template>
+   {{#each reasons}}
+   <div class="radio">
+        <label>
+            <input type="radio" name="proponentReasonRadio" value="reason{{key}}">
+            {{value}}
+        </label>
+    </div>
+   {{/each}}
 
-<template name="opponents_list">
-    <h4>Opponents: {{opponents.count}}</h4>
-    <button type="button" class="btn btn-default">Vote</button>
+    <div class="radio">
+        <label>
+            <input type="radio" name="proponentReasonRadio" value="reason{{reasons.length}}">
+            Other: <input type="text" id="proponentReason{{reasons.length}}">
+        </label>
+    </div>
+
+    <button type="button" class="btn btn-primary">Vote</button>
 </template>

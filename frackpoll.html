@@ -5,6 +5,11 @@
 
 <body>
     <div class="container">
+        {{> voting_template}}
+    </div>
+</body>
+
+<template name="voting_template">
 
     <h3>Should Unconventional Hydraulic Fracturing Methods Be Used To Extract Natural Gas in the U.S?</h3>
 
@@ -16,10 +21,19 @@
         <div class="col-md-4">
             {{> undecided_template}}
         </div>
+
+        <div class="col-md-4">
+            {{> opponents_template}}
+        </div>
     </div>
 
+    <div class="row">
+        <div class="col-md-4 col-md-offset-4">
+            <button type="button" class="btn btn-primary btn-block">Vote</button>
+        </div>
     </div>
-</body>
+
+</template>
 
 <template name="proponents_template">
     <h4>Proponents: {{proponents.count}}</h4>
@@ -27,7 +41,7 @@
    {{#each reasons}}
    <div class="radio">
         <label>
-            <input type="radio" name="proponentReasonRadio" value="{{key}}">
+            <input class="reason" type="radio" name="reasonRadio" value="{{key}}">
             {{value}}
         </label>
     </div>
@@ -35,12 +49,10 @@
 
     <div class="radio">
         <label>
-            <input type="radio" name="proponentReasonRadio" value="{{reasons.length}}">
-            Other: <input type="text" id="otherReasonInput">
+            <input class="reason" type="radio" name="reasonRadio" value="{{reasons.length}}">
+            Other: <input type="text" id="{{side}}ReasonInput">
         </label>
     </div>
-
-    <button type="button" class="btn btn-primary">Vote</button>
 </template>
 
 <template name="undecided_template">
@@ -49,7 +61,7 @@
    {{#each reasons}}
    <div class="radio">
         <label>
-            <input type="radio" name="undecidedReasonRadio" value="{{key}}">
+            <input class="reason" type="radio" name="reasonRadio" value="{{key}}">
             {{value}}
         </label>
     </div>
@@ -57,10 +69,31 @@
 
     <div class="radio">
         <label>
-            <input type="radio" name="undecidedReasonRadio" value="{{reasons.length}}">
-            Other: <input type="text" id="otherReasonInput">
+            <input class="reason" type="radio" name="reasonRadio" value="{{reasons.length}}">
+            Other: <input type="text" id="{{side}}ReasonInput">
         </label>
     </div>
 
-    <button type="button" class="btn btn-primary">Vote</button>
+</template>
+
+
+<template name="opponents_template">
+    <h4>Opponents: {{opponents.count}}</h4>
+
+   {{#each reasons}}
+   <div class="radio">
+        <label>
+            <input class="reason" type="radio" name="reasonRadio" value="{{key}}">
+            {{value}}
+        </label>
+    </div>
+   {{/each}}
+
+    <div class="radio">
+        <label>
+            <input class="reason" type="radio" name="reasonRadio" value="{{reasons.length}}">
+            Other: <input type="text" id="{{side}}ReasonInput">
+        </label>
+    </div>
+
 </template>

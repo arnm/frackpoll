@@ -1,0 +1,10 @@
+body {
+    font-family: 'Oxygen', sans-serif;
+    font-size: x-large;
+}
+
+#slide0 {
+    background-image: url(http://d1hw6n3yxknhky.cloudfront.net/024653149_prevstill.jpeg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}

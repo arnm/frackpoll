@@ -1,0 +1,9 @@
+{
+    "name": "frackpoll",
+    "dependencies": {
+	"jquery": "*",
+	"jquery-ui": "*",
+	"fullPage.js": "*",
+	"bootstrap": "*"
+    }
+}

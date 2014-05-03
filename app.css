@@ -1,10 +1,54 @@
 body {
     font-family: 'Oxygen', sans-serif;
-    font-size: x-large;
+    font-size: 2em;
 }
 
-#slide0 {
+
+#introduction {
+    background-color: #fff;
+}
+
+.textbox {
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.8);
+    border: 1px solid white;
+    padding: 2% 5%;
+}
+
+#what{
     background-image: url(http://d1hw6n3yxknhky.cloudfront.net/024653149_prevstill.jpeg);
     background-repeat: no-repeat;
     background-size: cover;
 }
+
+#how {
+    Background-image: url(img/frack_diagram.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#opponents{
+    background-image: url(http://encounteringurbanization.files.wordpress.com/2011/07/rtrsaof-3785.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+#opponents-reasons {
+    background-image: url(http://breakingenergy.com/wp-content/uploads/sites/2/2013/09/177209319.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#proponents {
+    background-image: url(http://www.legislativegazette.com/datedimages/2014/04/14/61dfd4slq360ce55.lg.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+
+} 
+ 
+#proponents-reasons {
+    background-image: url(http://ww2.hdnux.com/photos/15/56/12/3596941/5/628x471.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+
+} 
+ 
